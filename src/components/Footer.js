@@ -22,15 +22,15 @@ function Footer() {
 
           <div className="footer-social">
 
-            <a href="#" aria-label="LinkedIn">
+            <a href="" aria-label="LinkedIn">
               in
             </a>
 
-            <a href="#" aria-label="Instagram">
+            <a href="" aria-label="Instagram">
               ig
             </a>
 
-            <a href="#" aria-label="Facebook">
+            <a href="" aria-label="Facebook">
               f
             </a>
 

@@ -161,7 +161,7 @@ function Home() {
             <div>Node JS</div>
             <div>JavaScript</div>
             <div>Python</div>
-            <div>PHP</div>
+            <div>Flutter</div>
             <div>MySQL</div>
             <div>AI / ML</div>
             <div>Cloud</div>

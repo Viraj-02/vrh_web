@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
+  const form = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Thank you! We will contact you soon.");
+
+    emailjs
+      .sendForm(
+        "service_jbon7h7",
+        "template_lzmm9ih",
+        form.current,
+        {
+          publicKey: "ArHIWSN6dLD62H37G",
+        }
+      )
+      .then(
+        () => {
+          alert("Thank you! Your message has been sent successfully.");
+          form.current.reset();
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("Something went wrong. Please try again.");
+        }
+      );
   };
 
   return (
     <>
-
       <section className="page-hero">
-
         <div className="container">
 
           <p>CONTACT US</p>
@@ -26,9 +45,7 @@ function Contact() {
           </p>
 
         </div>
-
       </section>
-
 
       <section className="section">
 
@@ -68,58 +85,65 @@ function Contact() {
 
           </div>
 
-
           <form
+            ref={form}
             className="contact-form"
             onSubmit={handleSubmit}
           >
 
             <input
               type="text"
+              name="name"
               placeholder="Your Name"
               required
             />
 
             <input
               type="email"
+              name="email"
               placeholder="Email Address"
               required
             />
 
             <input
               type="text"
+              name="company"
               placeholder="Company Name"
             />
 
-            <select required>
+            <select
+              name="service"
+              required
+            >
 
               <option value="">
                 Select Service
               </option>
 
-              <option>
+              <option value="Custom Software">
                 Custom Software
               </option>
 
-              <option>
+              <option value="Web Development">
                 Web Development
               </option>
 
-              <option>
+              <option value="Mobile App">
                 Mobile App
               </option>
 
-              <option>
+              <option value="AI / Agentic AI">
                 AI / Agentic AI
               </option>
 
-              <option>
+              <option value="CRM / ERP">
                 CRM / ERP
               </option>
 
             </select>
 
             <textarea
+              name="message"
               placeholder="Tell us about your project..."
               rows="6"
               required
@@ -137,7 +161,6 @@ function Contact() {
         </div>
 
       </section>
-
     </>
   );
 }
